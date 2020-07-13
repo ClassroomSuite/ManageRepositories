@@ -1,6 +1,7 @@
 # Change access permissions for all student repositories within an organization for a given assignment
 
 # How to trigger this workflow
+# 1. Verify if your organization secrets as a MANAGE_ACCESS secret and that this workflow as access to it
 # 1. On GitHub, navigate to the main page of the repository.
 # 2. Under your repository name, click Actions.
 # 3. In the left sidebar, click the workflow you want to run.
