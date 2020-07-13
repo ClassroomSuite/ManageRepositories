@@ -1,0 +1,43 @@
+# Change access permissions for all student repositories within an organization for a given assignment
+
+# How to trigger this workflow
+# 1. On GitHub, navigate to the main page of the repository.
+# 2. Under your repository name, click Actions.
+# 3. In the left sidebar, click the workflow you want to run.
+# 4. Above the list of workflow runs, select Run workflow.
+# 5. Select the branch where the workflow will run and type the input parameters used by the workflow. Click Run workflow.
+
+name: Change access permissions
+
+on:
+  workflow_dispatch:
+    inputs:
+      org_name:
+        description: "Name of organization"
+        required: true
+      repo_base_name:
+        description: "Prefix name of repositories to select (usually the name of the assignment)"
+        required: true
+      permission_level:
+        description: "Repo access (push or pull)"
+        required: true
+        default: "pull"
+      
+jobs:
+  change_permission:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Apply permission
+      env: # Set the secret as an input
+        TOKEN: ${{ secrets.MANAGE_ACCESS }}
+      run: |
+        python3 -m pip install -q setuptools
+        python3 -m pip install -q git+"https://github.com/TestOrgJustAymeric/ClassroomTools"
+        python3 -m classroom_tools.change_repo_access_permissions \
+        --MANAGE_ACCESS_TOKEN="$TOKEN" \
+        --org_name=${{ github.event.inputs.org_name }} \
+        --repo_base_name=${{ github.event.inputs.repo_base_name }} \
+        --new_permission_level=${{ github.event.inputs.permission_level }}
