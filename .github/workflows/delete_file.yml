@@ -1,0 +1,34 @@
+
+name: Delete file from student repositories
+
+on:
+  workflow_dispatch:
+    inputs:
+      classroom_tools_url:
+        description: "ClassroomTools url"
+        required: true
+        default: "https://github.com/TestOrgJustAymeric/ClassroomTools"
+      repo_filter:
+        description: "Prefix to filter repositories for a given assignment or exercise"
+        required: true
+        default: "exercice"
+      path:
+        description: "A path to a file delete from students repositories"
+        required: true
+        default: ""
+
+jobs:
+  delete_file:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Delete file
+        run: |
+          python3 -m pip install -q setuptools
+          python3 -m pip install -q git+${{ github.event.inputs.classroom_tools_url }}
+          python3 -m classroom_tools.student_repositories.delete_file \
+          --TOKEN=${{ secrets.WORKFLOW }} \
+          --org_name="$GITHUB_REPOSITORY_OWNER" \
+          --repo_filter=${{ github.event.inputs.repo_filter }} \
+          --path=${{ github.event.inputs.path }}
