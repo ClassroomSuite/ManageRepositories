@@ -1,4 +1,4 @@
-name: Assignment actions
+name: Assignment workflow
 
 on:
   repository_dispatch:
@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Assignment actions
+      - name: Assignment workflow
 
         run: |
           classroom_tools_url="https://github.com/TestOrgJustAymeric/ClassroomTools"
