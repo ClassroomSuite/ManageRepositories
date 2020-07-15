@@ -29,7 +29,7 @@
 # 3. Set --repo_filter=your_repo_filter
 # 4. Set --new_permission_level=pull 
 
-name: Deadline
+name: Assignment 1 deadline
 
 on:
   schedule:
