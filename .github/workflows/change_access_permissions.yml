@@ -33,7 +33,7 @@ jobs:
 
     - name: Apply permission
       env: # Set the secret as an input
-        TOKEN: ${{ secrets.MANAGE_ACCESS }}
+        TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         python3 -m pip install -q setuptools
         python3 -m pip install -q git+"https://github.com/TestOrgJustAymeric/ClassroomTools"
