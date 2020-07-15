@@ -1,17 +1,17 @@
-name: Assignment classroom actions
+name: Assignment actions
 
 on:
   repository_dispatch:
   workflow_dispatch:
 
 jobs:
-  classroom_actions:
+  run:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Classroom actions
+      - name: Assignment actions
 
         run: |
           classroom_tools_url="https://github.com/TestOrgJustAymeric/ClassroomTools"
