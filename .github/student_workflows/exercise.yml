@@ -1,4 +1,4 @@
-name: Exercise actions
+name: Exercise workflow
 
 on:
   repository_dispatch:
@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Exercise actions
+      - name: Exercise workflow
 
         run: |
           classroom_tools_url="https://github.com/TestOrgJustAymeric/ClassroomTools"
