@@ -1,9 +1,8 @@
-name: Classroom actions
+name: Assignment classroom actions
 
 on:
   repository_dispatch:
   workflow_dispatch:
-  push:
 
 jobs:
   classroom_actions:
