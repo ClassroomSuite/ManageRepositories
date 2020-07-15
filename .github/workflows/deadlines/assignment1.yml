@@ -32,6 +32,7 @@
 name: Deadline assignment 1
 
 on:
+  push:
   schedule:
   - cron: '33 23 8 7 *'
 
