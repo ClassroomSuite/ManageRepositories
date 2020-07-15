@@ -33,7 +33,7 @@ name: Deadline
 
 on:
   schedule:
-  - cron: '33 23 8 7 *' # IMPORTANT: Use Coordinated Universal Time (UTC)
+  - cron: '33 23 8 7 *'
 
 jobs:
   apply_deadline:
