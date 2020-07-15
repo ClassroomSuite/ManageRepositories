@@ -28,7 +28,7 @@ jobs:
           python3 -m pip install -q setuptools
           python3 -m pip install -q git+${{ github.event.inputs.classroom_tools_url }}
           python3 -m classroom_tools.student_repositories.delete_file \
-          --TOKEN=${{ secrets.WORKFLOW }} \
+          --TOKEN=${{ secrets.MANAGE_ACCESS }} \
           --org_name="$GITHUB_REPOSITORY_OWNER" \
           --repo_filter=${{ github.event.inputs.repo_filter }} \
           --path=${{ github.event.inputs.path }}
