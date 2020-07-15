@@ -16,8 +16,8 @@ on:
       org_name:
         description: "Name of organization"
         required: true
-      repo_base_name:
-        description: "Prefix name of repositories to select (usually the name of the assignment)"
+      repo_filter:
+        description: "Prefix to filter repositories for a given assignment or exercise"
         required: true
       permission_level:
         description: "Repo access (push or pull)"
@@ -37,8 +37,8 @@ jobs:
       run: |
         python3 -m pip install -q setuptools
         python3 -m pip install -q git+"https://github.com/TestOrgJustAymeric/ClassroomTools"
-        python3 -m classroom_tools.change_repo_access_permissions \
-        --MANAGE_ACCESS_TOKEN="$TOKEN" \
+        python3 -m classroom_tools.student_repositories.access_permissions \
+        --TOKEN="$TOKEN" \
         --org_name=${{ github.event.inputs.org_name }} \
-        --repo_base_name=${{ github.event.inputs.repo_base_name }} \
+        --repo_filter=${{ github.event.inputs.repo_filter }} \
         --new_permission_level=${{ github.event.inputs.permission_level }}
