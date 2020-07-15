@@ -13,6 +13,11 @@ name: Change access permissions
 on:
   workflow_dispatch:
     inputs:
+      classroom_tools_url:
+        description: ""
+        required: true
+        default: "https://github.com/TestOrgJustAymeric/ClassroomTools":
+         
       org_name:
         description: "Name of organization"
         required: true
@@ -32,13 +37,11 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Apply permission
-      env: # Set the secret as an input
-        TOKEN: ${{ secrets.MANAGE_ACCESS }}
       run: |
         python3 -m pip install -q setuptools
-        python3 -m pip install -q git+"https://github.com/TestOrgJustAymeric/ClassroomTools"
+        python3 -m pip install -q git+${{ github.event.inputs.classroom_tools_url }}
         python3 -m classroom_tools.student_repositories.access_permissions \
-        --TOKEN="$TOKEN" \
-        --org_name=${{ github.event.inputs.org_name }} \
+        --TOKEN=${{ secrets.MANAGE_ACCESS }} \
+        --org_name="$GITHUB_REPOSITORY_OWNER" \
         --repo_filter=${{ github.event.inputs.repo_filter }} \
         --new_permission_level=${{ github.event.inputs.permission_level }}
