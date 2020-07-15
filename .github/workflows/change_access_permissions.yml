@@ -14,10 +14,9 @@ on:
   workflow_dispatch:
     inputs:
       classroom_tools_url:
-        description: ""
+        description: "ClassroomTools url"
         required: true
-        default: "https://github.com/TestOrgJustAymeric/ClassroomTools":
-         
+        default: "https://github.com/TestOrgJustAymeric/ClassroomTools"
       org_name:
         description: "Name of organization"
         required: true
