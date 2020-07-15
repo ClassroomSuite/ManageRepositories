@@ -1,1 +1,53 @@
+# on:
+#   schedule:
+#      * is a special character in YAML so you have to quote this string
+#     - cron:  '*/15 * * * *'
+# 
+# ┌───────────── minute (0 - 59)
+# │ ┌───────────── hour (0 - 23)
+# │ │ ┌───────────── day of the month (1 - 31)
+# │ │ │ ┌───────────── month (1 - 12 or JAN-DEC)
+# │ │ │ │ ┌───────────── day of the week (0 - 6 or SUN-SAT)
+# │ │ │ │ │                                   
+# │ │ │ │ │
+# │ │ │ │ │
+# * * * * *
+# 
+# Operator	Description	Example
+# *	Any value	* * * * * runs every minute of every day.
+# ,	Value list separator	2,10 4,5 * * * runs at minute 2 and 10 of the 4th and 5th hour of every day.
+# -	Range of values	0 4-6 * * * runs at minute 0 of the 4th, 5th, and 6th hour.
+# /	Step values	20/15 * * * * runs every 15 minutes starting from minute 20 through 59 (minutes 20, 35, and 50).
+#
+# Get notified when this runs: https://docs.github.com/en/github/managing-subscriptions-and-notifications-on-github/configuring-notifications#github-actions-notification-options
+# Verify your cron at https://crontab.guru/
+# IMPORTANT: Use Coordinated Universal Time (UTC)
 
+# Steps
+# 1. Verify your MANAGE_ACCESS token in your organization secrets
+# 2. Set the schedule cron
+# 3. Set --repo_filter=your_repo_filter
+# 4. Set --new_permission_level=pull 
+
+name: Deadline assignment 1
+
+on:
+  schedule:
+  - cron: '33 23 8 7 *'
+
+jobs:
+  apply_deadline:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Apply read only permissions
+      run: |
+        python3 -m pip install -q setuptools
+        python3 -m pip install -q git+"https://github.com/TestOrgJustAymeric/ClassroomTools"
+        python3 -m classroom_tools.student_repositories.access_permissions \
+        --TOKEN=${{ secrets.MANAGE_ACCESS }} \
+        --org_name="$GITHUB_REPOSITORY_OWNER" \
+        --repo_filter=exercice \
+        --new_permission_level=pull
