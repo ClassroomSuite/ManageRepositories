@@ -1,0 +1,79 @@
+name: Classroom actions
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  classroom_actions:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Classroom actions
+
+        run: |
+          classroom_tools_url="https://github.com/TestOrgJustAymeric/ClassroomTools"
+          template_repo_name="Exercice1"
+          template_repo_url="https://github.com/TestOrgJustAymeric/Exercice1.git"
+          test_file="test_exercice.py"
+          firebase_real_time_db_url="https://teststudentgradesdb.firebaseio.com/.json"
+          python3 -m pip install -q setuptools
+          python3 -m pip install git+"$classroom_tools_url"
+          function update_student_repository() {
+            printf '\n\n\n\n################################## Update student repository ##################################\n'
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            cwd=$(pwd)
+            git clone -v --depth 1 "$template_repo_url" ../"$template_repo_name"
+            cd ../"$template_repo_name"
+            printf "\n############## Template Repository ##############\n"
+            ls -R
+            printf "#####################################################\n\n"
+            input='./scripts/files_to_update.txt'
+            while IFS= read -r filename; do
+              printf 'Updating file: %s\n' "$filename"
+              cd "$cwd"
+              mkdir -p $(dirname "$filename")
+              cp -fRv ../"$template_repo_name"/"$filename" "$filename"
+              git add "$filename"
+            done <"$input"
+            printf "\n############## Student Repository ##############\n"
+            ls -R
+            printf "#####################################################\n\n"
+            git commit -a -m "Automatic sync with template repository"
+            git pull -v --rebase=true
+            git push -v
+          }
+          function show_grades_in_readme() {
+            printf '\n\n\n\n#################################### Show grades in readme ####################################\n'
+            # Create tests results
+            python3 "$test_file"
+            # Create grades from tests
+            python3 -m classroom_tools.grading.create_grades
+            # Update README
+            python3 -m classroom_tools.grading.show_grades_in_readme
+            # Push modifications
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git add logs/tests_results.txt
+            git add logs/grades.json
+            git add README.md
+            git commit -a -m "Updated autograding results"
+            git pull -v --rebase=true
+            git push -v
+          }
+          function patch_db() {
+            printf '\n\n\n\n############################## Patch Firebase Realtime Database ###############################\n'
+            python3 -m classroom_tools.grading.patch_db \
+            --access_token="" \
+            --firebase_real_time_db_url="$firebase_real_time_db_url" \
+            --github_repo=$(basename $(pwd))
+          }
+          python3 -m pip install -q setuptools
+          python3 -m pip install git+"$classroom_tools_url"
+          update_student_repository
+          show_grades_in_readme
+          patch_db
+          echo 0
