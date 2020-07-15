@@ -2,11 +2,11 @@
 
 # How to trigger this workflow
 # 1. Verify if your organization secrets as a MANAGE_ACCESS secret and that this workflow as access to it
-# 1. On GitHub, navigate to the main page of the repository.
-# 2. Under your repository name, click Actions.
-# 3. In the left sidebar, click the workflow you want to run.
-# 4. Above the list of workflow runs, select Run workflow.
-# 5. Select the branch where the workflow will run and type the input parameters used by the workflow. Click Run workflow.
+# 2. On GitHub, navigate to the main page of the repository.
+# 3. Under your repository name, click Actions.
+# 4. In the left sidebar, click the workflow you want to run.
+# 5. Above the list of workflow runs, select Run workflow.
+# 6. Select the branch where the workflow will run and type the input parameters used by the workflow. Click Run workflow.
 
 name: Change access permissions
 
