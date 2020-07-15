@@ -32,13 +32,13 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Apply permission
-      env: # Set the secret as an input
-        TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #env: # Set the secret as an input
+        #TOKEN: ${{ GITHUB_TOKEN }}
       run: |
         python3 -m pip install -q setuptools
         python3 -m pip install -q git+"https://github.com/TestOrgJustAymeric/ClassroomTools"
         python3 -m classroom_tools.change_repo_access_permissions \
-        --MANAGE_ACCESS_TOKEN="$TOKEN" \
+        --MANAGE_ACCESS_TOKEN="$GITHUB_TOKEN" \
         --org_name=${{ github.event.inputs.org_name }} \
         --repo_base_name=${{ github.event.inputs.repo_base_name }} \
         --new_permission_level=${{ github.event.inputs.permission_level }}
