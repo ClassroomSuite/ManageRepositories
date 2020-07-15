@@ -25,7 +25,7 @@ on:
       new_workflow_files:
         description: "(optional) A path to a %workflow%.yml file to add in students repositories"
         required: false
-        default: ".github/student_workflows/classroom_actions.yml"
+        default: ".github/student_workflows/exercise_actions.yml"
 
 jobs:
   update_workflows:
