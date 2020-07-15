@@ -8,6 +8,7 @@
 name: Update student workflows
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       classroom_tools_url:
