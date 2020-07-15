@@ -1,5 +1,5 @@
 
-name: Delete file from student repositories
+name: Delete file from students repositories
 
 on:
   workflow_dispatch:
