@@ -1,0 +1,19 @@
+name: Assignment workflow
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Assignment workflow
+
+        run: |
+          wget https://raw.githubusercontent.com/INF1007-Exercices/TemplateExercise1/master/scripts/classroom_actions.sh
+          chmod -x ./classroom_actions.sh
+          bash ./classroom_actions.sh
