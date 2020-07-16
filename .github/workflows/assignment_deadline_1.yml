@@ -49,7 +49,7 @@ jobs:
         python3 -m pip install -q setuptools
         python3 -m pip install -q git+"https://github.com/TestOrgJustAymeric/ClassroomTools"
         python3 -m classroom_tools.student_repositories.access_permissions \
-        --TOKEN=${{ secrets.MANAGE_ACCESS }} \
+        --TOKEN="$GITHUB_TOKEN" \
         --org_name=TestOrgJustAymeric \
         --repo_filter=exercice \
         --new_permission_level=pull
