@@ -1,4 +1,4 @@
-name: Assignment workflow
+name: Exercise workflow
 
 on:
   repository_dispatch:
@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Assignment workflow
+      - name: Exercise workflow
 
         run: |
           wget https://raw.githubusercontent.com/INF1007-Exercices/TemplateExercise1/master/scripts/classroom_actions.sh
