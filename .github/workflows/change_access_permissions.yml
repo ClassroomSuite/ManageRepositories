@@ -16,7 +16,11 @@ on:
       classroom_tools_url:
         description: "ClassroomTools url"
         required: true
-        default: "https://github.com/TestOrgJustAymeric/ClassroomTools"
+        default: "https://github.com/ClassroomSuite/ClassroomTools"
+      org_name:
+        description: "Name of organization with student repositories"
+        required: true
+        default: TestOrgJustAymeric
       repo_filter:
         description: "Prefix to filter repositories for a given assignment or exercise"
         required: true
@@ -38,6 +42,6 @@ jobs:
         python3 -m pip install -q git+${{ github.event.inputs.classroom_tools_url }}
         python3 -m classroom_tools.student_repositories.access_permissions \
         --TOKEN=${{ secrets.MANAGE_ACCESS }} \
-        --org_name="$GITHUB_REPOSITORY_OWNER" \
+        --org_name=${{ github.event.inputs.org_name }} \
         --repo_filter=${{ github.event.inputs.repo_filter }} \
         --new_permission_level=${{ github.event.inputs.permission_level }}
