@@ -15,6 +15,14 @@ jobs:
       - name: Exercise workflow
 
         run: |
+          python -m classroom_tools.student_repositories.sync_with_template_repository \
+            --token="$GITHUB_TOKEN" \
+            --org_name="TestOrgJustAymeric" \
+            --repo_filter="exercice" \
+            --template_repo_fullname="INF1007-Exercices/TemplateExercise1" \
+            --files_to_update \
+              "scripts/files_to_update.txt" \
+              ".theia/settings.json" \
           wget https://raw.githubusercontent.com/INF1007-Exercices/TemplateExercise1/master/scripts/classroom_actions.sh
           chmod -x ./classroom_actions.sh
           bash ./classroom_actions.sh
