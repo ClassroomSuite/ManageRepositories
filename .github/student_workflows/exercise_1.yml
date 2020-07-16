@@ -15,8 +15,8 @@ jobs:
 
         run: |
           classroom_tools_url="https://github.com/ClassroomSuite/ClassroomTools"
-          template_repo_name="Exercice1"
-          template_repo_url="https://github.com/ClassroomSuite/Exercice1.git"
+          template_repo_name="TemplateExercise1"
+          template_repo_url="https://github.com/ClassroomSuite/TemplateExercise1.git"
           test_file="test_exercice.py"
           firebase_real_time_db_url="https://teststudentgradesdb.firebaseio.com/.json"
 
