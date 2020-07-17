@@ -24,7 +24,7 @@ jobs:
             printf '\n\n\n\n################################## Update student repository ##################################\n'
             python3 -m classroom_tools.student_repositories.sync_with_template_repository \
               --template_repo_fullname="$template_repo_fullname" \
-              --as_student_repo_workflow=True
+              --as_student_repo_workflow
           }
 
           function show_grades_in_readme() {
