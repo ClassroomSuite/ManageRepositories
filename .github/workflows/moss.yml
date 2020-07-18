@@ -40,7 +40,7 @@ jobs:
           python3 -m classroom_tools.plagiarism_checker.moss \
             --user_id="${{ secrets.MOSS_USER_ID }}" \
             --report_name="Exercice1" \
-            --TOKEN="${{ secrets.REPO_PAT }}" \
+            --token="${{ secrets.REPO_PAT }}" \
             --org_name="${{ github.event.inputs.org_name }}" \
             --repo_filter="${{ github.event.inputs.repo_filter }}" \
             --paths="${{ github.event.inputs.paths }}"
