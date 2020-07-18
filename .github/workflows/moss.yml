@@ -36,11 +36,11 @@ jobs:
       - name: Subject files to Moss
         run: |
           python3 -m pip install -q setuptools
-          python3 -m pip install -q git+"${{ github.event.inputs.plagiarism_checker_url }}"
+          python3 -m pip install git+"${{ github.event.inputs.plagiarism_checker_url }}"
           python3 -m plagiarism_checker.moss \
             --user_id="${{ secrets.MOSS_USER_ID }} \
             --report_name="Exercice1" \
-            --TOKEN=${{ secrets.REPO_PAT }} \
-            --org_name=${{ github.event.inputs.org_name }} \
-            --repo_filter=${{ github.event.inputs.repo_filter }} \
+            --TOKEN="${{ secrets.REPO_PAT }}" \
+            --org_name="${{ github.event.inputs.org_name }}" \
+            --repo_filter="${{ github.event.inputs.repo_filter }}" \
             --paths="${{ github.event.inputs.paths }}"
