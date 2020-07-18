@@ -5,7 +5,7 @@
 # 4. Above the list of workflow runs, select Run workflow.
 # 5. Select the branch where the workflow will run and type the input parameters used by the workflow. Click Run workflow.
 
-name: Update students workflows
+name: Moss
 
 on:
   workflow_dispatch:
@@ -28,12 +28,12 @@ on:
         default: "exercice.py"
 
 jobs:
-  update_workflows:
+  run:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
-      - name: Update workflows
+      - name: Subject files to Moss
         run: |
           python3 -m pip install -q setuptools
           python3 -m pip install -q git+${{ github.event.inputs.plagiarism_checker_url }}
