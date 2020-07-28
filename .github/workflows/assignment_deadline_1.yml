@@ -25,7 +25,7 @@
 # IMPORTANT: Use Coordinated Universal Time (UTC)
 
 # Steps
-# 1. Verify that your MANAGE_ACCESS token in your organization secrets has repo permissions and is accessible by this repository
+# 1. Verify that REPO_PAT secret has repo permissions and is accessible by this repository
 # 2. Set the schedule cron
 # 3. Set --org_name=your_org_name
 # 3. Set --repo_filter=your_repo_filter
@@ -49,7 +49,7 @@ jobs:
         python3 -m pip install -q setuptools
         python3 -m pip install -q git+"https://github.com/TestOrgJustAymeric/ClassroomTools"
         python3 -m classroom_tools.student_repositories.access_permissions \
-        --TOKEN=${{ secrets.MANAGE_ACCESS }} \
+        --TOKEN=${{ secrets.REPO_PAT }} \
         --org_name=TestOrgJustAymeric \
         --repo_filter=exercice \
         --new_permission_level=pull
