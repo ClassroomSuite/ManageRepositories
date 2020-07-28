@@ -1,7 +1,7 @@
 # Change access permissions for all student repositories within an organization for a given assignment
 
 # How to trigger this workflow
-# 1. Verify if your organization secrets as a MANAGE_ACCESS secret and that this workflow as access to it
+# 1. Verify that REPO_PAT secret has repo permissions and is accessible by this repository
 # 2. On GitHub, navigate to the main page of the repository.
 # 3. Under your repository name, click Actions.
 # 4. In the left sidebar, click the workflow you want to run.
@@ -41,7 +41,7 @@ jobs:
           python3 -m pip install -q setuptools
           python3 -m pip install -q git+${{ github.event.inputs.classroom_tools_url }}
           python3 -m classroom_tools.student_repositories.access_permissions \
-          --TOKEN=${{ secrets.MANAGE_ACCESS }} \
+          --TOKEN=${{ secrets.REPO_PAT }} \
           --org_name=${{ github.event.inputs.org_name }} \
           --repo_filter=${{ github.event.inputs.repo_filter }} \
           --new_permission_level=${{ github.event.inputs.permission_level }}
