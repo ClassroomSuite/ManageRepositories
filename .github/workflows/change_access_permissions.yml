@@ -40,7 +40,7 @@ jobs:
           python3 -m pip install -q setuptools
           python3 -m pip install -q git+${{ github.event.inputs.classroom_tools_url }}
           python3 -m classroom_tools.student_repositories.access_permissions \
-          --TOKEN=${{ secrets.REPO_PAT }} \
+          --token=${{ secrets.REPO_PAT }} \
           --org_name=${{ github.event.inputs.org_name }} \
           --repo_filter=${{ github.event.inputs.repo_filter }} \
           --new_permission_level=${{ github.event.inputs.permission_level }}
