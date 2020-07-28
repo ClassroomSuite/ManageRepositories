@@ -41,7 +41,7 @@ jobs:
           python3 -m pip install -q setuptools
           python3 -m pip install -q git+${{ github.event.inputs.classroom_tools_url }}
           python3 -m classroom_tools.student_repositories.update_workflows \
-          --TOKEN=${{ secrets.WORKFLOW }} \
+          --token=${{ secrets.REPO_WORKFLOW_PAT }} \
           --org_name=${{ github.event.inputs.org_name }} \
           --repo_filter=${{ github.event.inputs.repo_filter }} \
           --delete_previous_workflows=${{ github.event.inputs.delete_previous_workflows }} \
