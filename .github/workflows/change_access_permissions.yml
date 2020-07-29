@@ -1,13 +1,4 @@
 # Change access permissions for all student repositories within an organization for a given assignment
-
-# How to trigger this workflow
-# 1. Verify that REPO_PAT secret has repo permissions and is accessible by this repository
-# 2. On GitHub, navigate to the main page of the repository.
-# 3. Under your repository name, click Actions.
-# 4. In the left sidebar, click the workflow you want to run.
-# 5. Above the list of workflow runs, select Run workflow.
-# 6. Select the branch where the workflow will run and type the input parameters used by the workflow. Click Run workflow.
-
 name: Change access permissions
 
 on:
