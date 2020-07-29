@@ -6,7 +6,6 @@ on:
       confirmation:
         description: "Are you sure you want to delete all workflow run from this repository? (yes or no)"
         required: true
-        default: no
 
 jobs:
   delete_file:
