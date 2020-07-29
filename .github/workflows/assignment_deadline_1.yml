@@ -35,7 +35,7 @@ name: Assignment 1 deadline
 
 on:
   schedule:
-  - cron: '33 23 8 7 *'
+  - cron: '33 23 8 8 *'
 
 jobs:
   apply_deadline:
