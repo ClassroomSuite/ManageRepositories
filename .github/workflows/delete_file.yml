@@ -3,10 +3,6 @@ name: Delete file from students repositories
 on:
   workflow_dispatch:
     inputs:
-      classroom_tools_url:
-        description: "ClassroomTools url"
-        required: true
-        default: "https://github.com/ClassroomSuite/ClassroomTools"
       org_name:
         description: "Name of organization with student repositories"
         required: true
@@ -27,7 +23,7 @@ jobs:
       - name: Delete file
         run: |
           python3 -m pip install -q setuptools
-          python3 -m pip install -q git+${{ github.event.inputs.classroom_tools_url }}
+          python3 -m pip install -q git+${{ secrets.CLASSROOM_TOOLS_URL }}
           python3 -m classroom_tools.student_repositories.delete_file \
           --token=${{ secrets.REPO_PAT }} \
           --org_name=${{ github.event.inputs.org_name }} \
