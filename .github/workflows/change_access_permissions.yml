@@ -2,7 +2,6 @@
 name: Change access permissions
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       org_name:
