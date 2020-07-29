@@ -27,5 +27,5 @@ jobs:
               python3 -m classroom_tools.delete_workflow_runs \
                 --token=${{ secrets.REPO_PAT }} \
                 --repo_fullname="$GITHUB_REPOSITORY" \
-                --workflow_name_filter="${{ github.event.inputs.workflow_name_filter }}" "${{ github.event.inputs.delete_failed_runs_only }}"
+                --workflow_name_filter="${{ github.event.inputs.workflow_name_filter }}" ${{ github.event.inputs.delete_failed_runs_only }}
           fi
