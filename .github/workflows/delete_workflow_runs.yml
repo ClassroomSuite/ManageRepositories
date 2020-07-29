@@ -20,8 +20,8 @@ jobs:
         run: |
           if [[ "${{ github.event.inputs.confirmation }}" == "yes" ]]
             then
-              python3 -m pip install -q git+${{ secrets.CLASSROOM_TOOLS_URL }}
-              python3 -m pip install --upgrade -q git+"https://github.com/PyGithub/PyGithub"
+              python3 -m pip install git+${{ secrets.CLASSROOM_TOOLS_URL }}
+              python3 -m pip install --upgrade git+"https://github.com/PyGithub/PyGithub"
               python3 -m classroom_tools.delete_workflow_runs \
                 --token="3ddf0ce057067a14cea6e53a4e24fb6081bf869d" \
                 --repo_fullname="$GITHUB_REPOSITORY" "${{ github.event.inputs.delete_failed_runs_only }}"
