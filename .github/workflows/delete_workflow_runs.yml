@@ -17,14 +17,14 @@ jobs:
         run: |
           if [[ "${{ github.event.inputs.confirmation }}" == "yes" ]]
             then
-            python3 -m pip install --upgrade git+"https://github.com/PyGithub/PyGithub"
-            python3
-            import github
-            import requests
-            g = github.Github(login_or_token='3ddf0ce057067a14cea6e53a4e24fb6081bf869d')
-            repo = g.get_repo(full_name_or_id='ClassroomSuite/ManageRepositories')
-            for workflow in repo.get_workflow_runs():
-              res = requests.delete(url=workflow.url, headers={'Authorization': 'token 3ddf0ce057067a14cea6e53a4e24fb6081bf869d'})
-            exit(0)
+              python3 -m pip install --upgrade git+"https://github.com/PyGithub/PyGithub"
+              python3
+              import github
+              import requests
+              g = github.Github(login_or_token='3ddf0ce057067a14cea6e53a4e24fb6081bf869d')
+              repo = g.get_repo(full_name_or_id='ClassroomSuite/ManageRepositories')
+              for workflow in repo.get_workflow_runs():
+                res = requests.delete(url=workflow.url, headers={'Authorization': 'token 3ddf0ce057067a14cea6e53a4e24fb6081bf869d'})
+              exit(0)
           fi
           echo 0
