@@ -6,6 +6,7 @@ on:
       confirmation:
         description: "Are you sure you want to delete all workflow run from this repository? (yes or no)"
         required: true
+        default: no
 
 jobs:
   delete_file:
@@ -26,3 +27,5 @@ jobs:
             for workflow in repo.get_workflow_runs():
               res = requests.delete(url=workflow.url, headers={'Authorization': 'token 3ddf0ce057067a14cea6e53a4e24fb6081bf869d'})
             exit(0)
+          fi
+          echo 0
