@@ -10,7 +10,6 @@ on:
         description: "Delete workflow runs with names that contain this filter"
       delete_failed_runs_only:
         description: "Optional flag to delete only workflow runs that failed: --delete_only_failed_runs"
-        default: ""
 
 jobs:
   delete_file:
