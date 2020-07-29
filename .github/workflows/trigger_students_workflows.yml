@@ -8,6 +8,7 @@
 name: Trigger students workflows
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       org_name:
