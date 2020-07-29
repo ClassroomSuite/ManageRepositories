@@ -10,11 +10,9 @@ on:
       org_name:
         description: "Name of organization with student repositories"
         required: true
-        default: TestOrgJustAymeric
       repo_filter:
         description: "Prefix to filter repositories for a given assignment or exercise"
         required: true
-        default: "exercice"
       path:
         description: "A path to a file delete from students repositories"
         required: true
