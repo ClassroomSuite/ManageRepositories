@@ -6,6 +6,9 @@ on:
       confirmation:
         description: "Are you sure you want to delete all workflow run from this repository? (yes or no)"
         required: true
+      delete_failed_runs_only:
+        description: "Optional flag to delete only workflow runs that failed"
+        default: "--delete_only_failed_runs"
 
 jobs:
   delete_file:
@@ -17,14 +20,9 @@ jobs:
         run: |
           if [[ "${{ github.event.inputs.confirmation }}" == "yes" ]]
             then
-              python3 -m pip install --upgrade git+"https://github.com/PyGithub/PyGithub"
-              python3
-              import github
-              import requests
-              g = github.Github(login_or_token='3ddf0ce057067a14cea6e53a4e24fb6081bf869d')
-              repo = g.get_repo(full_name_or_id='ClassroomSuite/ManageRepositories')
-              for workflow in repo.get_workflow_runs():
-                res = requests.delete(url=workflow.url, headers={'Authorization': 'token 3ddf0ce057067a14cea6e53a4e24fb6081bf869d'})
-              exit(0)
+              python3 -m pip install -q git+"https://github.com/PyGithub/PyGithub"
+              python3 -m pip install -q git+${{ secrets.CLASSROOM_TOOLS_URL }}
+              python3 -m classroom_tools.delete_workflow_runs \
+                --token="3ddf0ce057067a14cea6e53a4e24fb6081bf869d" \
+                --repo_fullname="$GITHUB_REPOSITORY" "${{ github.event.inputs.delete_failed_runs_only }}"
           fi
-          echo 0
