@@ -1,7 +1,6 @@
 name: Update students repos
 
 on:
-  push:
   workflow_dispatch:
     inputs:
       org_name:
