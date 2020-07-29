@@ -5,13 +5,6 @@
 #     types: [your_event_type] # optional. Will capture all types if not specified
 #
 
-# How to trigger this workflow
-# 1. On GitHub, navigate to the main page of the repository.
-# 2. Under your repository name, click Actions.
-# 3. In the left sidebar, click the workflow you want to run.
-# 4. Above the list of workflow runs, select Run workflow.
-# 5. Select the branch where the workflow will run and type the input parameters used by the workflow. Click Run workflow.
-
 name: Trigger students workflows
 
 on:
@@ -24,11 +17,9 @@ on:
       org_name:
         description: "Name of organization with student repositories"
         required: true
-        default: TestOrgJustAymeric
       repo_filter:
         description: "Prefix to filter repositories for a given assignment or exercise"
         required: true
-        default: "exercice"
       event_type:
         description: "Event type shown in Actions (may be used to select specific workflows)"
         required: false
