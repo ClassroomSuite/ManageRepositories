@@ -1,0 +1,6 @@
+# How to trigger workflows
+1. On GitHub, navigate to the main page of the repository.
+2. Under your repository name, click Actions.
+3. In the left sidebar, click the workflow you want to run.
+4. Above the list of workflow runs, select Run workflow.
+5. Select the branch where the workflow will run and type the input parameters used by the workflow. Click Run workflow.
