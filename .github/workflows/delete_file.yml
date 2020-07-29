@@ -1,6 +1,7 @@
 name: Delete a file from students repositories
 
 on:
+  push:
   workflow_dispatch:
     inputs:
       org_name:
