@@ -4,8 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       confirmation:
-        description: "Are you sure you want to delete workflow runs from this repository? (yes or no)"
+        description: "Are you sure you want to delete workflow runs from this repository? (yes)"
         required: true
+        default: The last run of each workflow is kept
       workflow_name_filter:
         description: "Delete workflow runs with names that contain this filter"
       delete_failed_runs_only:
