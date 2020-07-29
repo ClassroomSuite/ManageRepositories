@@ -1,0 +1,30 @@
+name: Update students repos
+
+on:
+  workflow_dispatch:
+    inputs:
+      org_name:
+        description: "Name of organization with student repositories"
+        required: true
+      repo_filter:
+        description: "Prefix to filter repositories for a given assignment or exercise"
+        required: true
+      template_repo_fullname:
+        description: "Template repo fullname in format: OrgName/RepoName"
+        required: true
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Update students repos
+        run: |
+          python3 -m pip install -q setuptools
+          python3 -m pip install -q git+${{ secrets.CLASSROOM_TOOLS_URL }}
+          python3 -m classroom_tools.student_repositories.sync_with_template_repository \
+            --template_repo_fullname=${{ github.event.inputs.template_repo_fullname }} \
+            --token="${{ secrets.REPO_WORKFLOW_PAT }}" \
+            --org_name=${{ github.event.inputs.org_name }} \
+            --repo_filter=${{ github.event.inputs.repo_filter }}
