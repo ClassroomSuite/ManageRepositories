@@ -6,6 +6,8 @@ on:
       confirmation:
         description: "Are you sure you want to delete all workflow run from this repository? (yes or no)"
         required: true
+      workflow_name_filter:
+        description: "Delete workflow runs with names that contain this filter"
       delete_failed_runs_only:
         description: "Optional flag to delete only workflow runs that failed"
         default: "--delete_only_failed_runs"
@@ -25,5 +27,6 @@ jobs:
               python3 -m pip install --upgrade -q git+"https://github.com/PyGithub/PyGithub"
               python3 -m classroom_tools.delete_workflow_runs \
                 --token=${{ secrets.REPO_PAT }} \
-                --repo_fullname="$GITHUB_REPOSITORY" "${{ github.event.inputs.delete_failed_runs_only }}"
+                --repo_fullname="$GITHUB_REPOSITORY" \
+                --workflow_name_filter="${{ github.event.inputs.workflow_name_filter }}" "${{ github.event.inputs.delete_failed_runs_only }}"
           fi
