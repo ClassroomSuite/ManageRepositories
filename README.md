@@ -14,6 +14,6 @@
 5. Select the branch where the workflow will run and type the input parameters used by the workflow. Click Run workflow.
 
 # Secrets
-* CLASSROOM_TOOLS: https://github.com/ClassroomSuite/ClassroomTools
+* CLASSROOM_TOOLS_URL: https://github.com/ClassroomSuite/ClassroomTools
 * REPO_PAT: A personal access token with repo permissions
 * REPO_WORKFLOW_PAT: A personal access token with repo and workflow permissions
