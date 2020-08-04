@@ -3,7 +3,8 @@ name: Verifications
 on:
   workflow_dispatch:
   push:
-
+    paths: .github/workflows/*
+    
 jobs:
   Secrets:
     runs-on: ubuntu-latest
