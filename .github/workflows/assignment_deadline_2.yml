@@ -71,4 +71,4 @@ jobs:
           --head="remise" \
           --base="correction" \
           --pull_request_title="Correction" \
-          --pull_request_body=$pull_request_body
+          --pull_request_body="$pull_request_body"
