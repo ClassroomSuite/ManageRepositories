@@ -40,6 +40,7 @@ name: Assignment 2 deadline
 on:
   schedule:
   - cron: '33 23 8 8 *'
+  workflow_dispatch:
 
 jobs:
   apply_deadline:
