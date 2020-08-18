@@ -59,10 +59,10 @@ jobs:
           --repo_filter="exercice" \
           --branch_name="remise"
        
-        pull_request_body="La correction du TP est effectuer avec un Pull Request Review.\n"
-        pull_request_body+="Lisez les commentaires des correcteurs/trices."
-        pull_request_body+="Pour plus d'information consulter:\n"
-        pull_request_body+="\thttps://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request"
+        pull_request_body="La correction du TP est effectuer avec un Pull Request Review. "
+        pull_request_body+="Lisez les commentaires des correcteurs/trices. "
+        pull_request_body+="Pour plus d'information consulter: "
+        pull_request_body+="https://docs.github.com/en/github/collaborating-with-issues-and-pull-requests/commenting-on-a-pull-request"
         
         python3 -m classroom_tools.student_repositories.create_grading_branch_and_pull_request \
           --token=${{ secrets.REPO_PAT }} \
