@@ -48,7 +48,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Apply read only permissions
+    - name: Create protected branches with student assignments upon deadline
       run: |
         python3 -m pip install -q setuptools
         python3 -m pip install -q git+${{ secrets.CLASSROOM_TOOLS_URL }}
