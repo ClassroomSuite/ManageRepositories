@@ -16,9 +16,6 @@ on:
         description: "Create private repository (true or false)"
         required: true
         default: "true"
-      admin_collaborators:
-        description: "Collaborator usernames to receive admin access"
-        required: false
       write_collaborators:
         description: "Collaborator usernames to receive write access"
         required: false
@@ -43,6 +40,5 @@ jobs:
             --org_name=${{ github.event.inputs.org_name }} \
             --repo_name=${{ github.event.inputs.repo_name }} \
             --private=${{ github.event.inputs.private }} \
-            --admin_collaborators="${{ github.event.inputs.admin_collaborators }}" \
             --write_collaborators="${{ github.event.inputs.write_collaborators }}" \
             --team_name=${{ github.event.inputs.team_name }}
