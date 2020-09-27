@@ -20,7 +20,7 @@ on:
         description: "Collaborator usernames to receive admin access"
         required: false
       write_collaborators:
-        description: "Student Github login. And"
+        description: "Collaborator usernames to receive write access"
         required: false
       team_name:
         description: "Student's team name to receive write access"
